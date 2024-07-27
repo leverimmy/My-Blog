@@ -1,0 +1,9 @@
+.deploy*/
+node_modules/
+public/
+services/*/site/
+db.json
+.DS_Store
+Thumbs.db
+_multiconfig.yml
+*.log

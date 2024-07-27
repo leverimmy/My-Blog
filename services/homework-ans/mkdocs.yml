@@ -1,0 +1,125 @@
+site_name: 清华大学微积分 A 教材课后习题答案
+theme:
+  name: material
+  features:
+  - content.action.edit
+  - navigation.tabs
+  - navigation.instant
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - '首页': index.md
+  - '微积分 A(1)':
+    - '总览': calculus-1/index.md
+    - '第1章':
+      - '习题1.1': calculus-1/chapter1/exercise1-1.md
+      - '习题1.2': calculus-1/chapter1/exercise1-2.md
+      - '习题1.3': calculus-1/chapter1/exercise1-3.md
+      - '习题1.4': calculus-1/chapter1/exercise1-4.md
+      - '习题1.5': calculus-1/chapter1/exercise1-5.md
+      - '第1章总复习题': calculus-1/chapter1/exercise1-rev.md
+    - '第2章':
+      - '习题2.1': calculus-1/chapter2/exercise2-1.md
+      - '习题2.2': calculus-1/chapter2/exercise2-2.md
+      - '习题2.3': calculus-1/chapter2/exercise2-3.md
+      - '习题2.4': calculus-1/chapter2/exercise2-4.md
+      - '习题2.5': calculus-1/chapter2/exercise2-5.md
+      - '习题2.6': calculus-1/chapter2/exercise2-6.md
+      - '第2章总复习题': calculus-1/chapter2/exercise2-rev.md
+    - '第3章':
+      - '习题3.1': calculus-1/chapter3/exercise3-1.md
+      - '习题3.2': calculus-1/chapter3/exercise3-2.md
+      - '习题3.3': calculus-1/chapter3/exercise3-3.md
+      - '第3章总复习题': calculus-1/chapter3/exercise3-rev.md
+    - '第4章':
+      - '习题4.1': calculus-1/chapter4/exercise4-1.md
+      - '习题4.2': calculus-1/chapter4/exercise4-2.md
+      - '习题4.3': calculus-1/chapter4/exercise4-3.md
+      - '习题4.4': calculus-1/chapter4/exercise4-4.md
+      - '习题4.5': calculus-1/chapter4/exercise4-5.md
+      - '习题4.6': calculus-1/chapter4/exercise4-6.md
+      - '第4章总复习题': calculus-1/chapter4/exercise4-rev.md
+    - '第5章':
+      - '习题5.1': calculus-1/chapter5/exercise5-1.md
+      - '习题5.2': calculus-1/chapter5/exercise5-2.md
+      - '习题5.3': calculus-1/chapter5/exercise5-3.md
+      - '习题5.4': calculus-1/chapter5/exercise5-4.md
+      - '习题5.5': calculus-1/chapter5/exercise5-5.md
+      - '习题5.6': calculus-1/chapter5/exercise5-6.md
+      - '习题5.7': calculus-1/chapter5/exercise5-7.md
+      - '第5章总复习题': calculus-1/chapter5/exercise5-rev.md
+    - '第6章':
+      - '习题6.1': calculus-1/chapter6/exercise6-1.md
+      - '习题6.2': calculus-1/chapter6/exercise6-2.md
+      - '第6章总复习题': calculus-1/chapter6/exercise6-rev.md
+    - '第7章':
+      - '习题7.1': calculus-1/chapter7/exercise7-1.md
+      - '习题7.2': calculus-1/chapter7/exercise7-2.md
+      - '习题7.3': calculus-1/chapter7/exercise7-3.md
+      - '习题7.4': calculus-1/chapter7/exercise7-4.md
+      - '习题7.5': calculus-1/chapter7/exercise7-5.md
+      - '习题7.6': calculus-1/chapter7/exercise7-6.md
+      - '第7章总复习题': calculus-1/chapter7/exercise7-rev.md
+  - '微积分 A(2)':
+    - '总览': calculus-2/index.md
+    - '第1章':
+      - '习题1.1': calculus-2/chapter1/exercise1-1.md
+      - '习题1.2': calculus-2/chapter1/exercise1-2.md
+      - '习题1.3': calculus-2/chapter1/exercise1-3.md
+      - '习题1.4': calculus-2/chapter1/exercise1-4.md
+      - '习题1.5': calculus-2/chapter1/exercise1-5.md
+      - '习题1.6': calculus-2/chapter1/exercise1-6.md
+      - '习题1.7': calculus-2/chapter1/exercise1-7.md
+      - '习题1.8': calculus-2/chapter1/exercise1-8.md
+      - '习题1.9': calculus-2/chapter1/exercise1-9.md
+      - '第1章总复习题': calculus-2/chapter1/exercise1-rev.md
+    - '第2章':
+      - '习题2.1': calculus-2/chapter2/exercise2-1.md
+      - '习题2.2': calculus-2/chapter2/exercise2-2.md
+      - '习题2.3': calculus-2/chapter2/exercise2-3.md
+      - '第2章总复习题': calculus-2/chapter2/exercise2-rev.md
+    - '第3章':
+      - '习题3.1': calculus-2/chapter3/exercise3-1.md
+      - '习题3.2': calculus-2/chapter3/exercise3-2.md
+      - '习题3.3': calculus-2/chapter3/exercise3-3.md
+      - '习题3.4': calculus-2/chapter3/exercise3-4.md
+      - '习题3.5': calculus-2/chapter3/exercise3-5.md
+      - '第3章总复习题': calculus-2/chapter3/exercise3-rev.md
+    - '第4章':
+      - '习题4.1': calculus-2/chapter4/exercise4-1.md
+      - '习题4.2': calculus-2/chapter4/exercise4-2.md
+      - '习题4.3': calculus-2/chapter4/exercise4-3.md
+      - '习题4.4': calculus-2/chapter4/exercise4-4.md
+      - '习题4.5': calculus-2/chapter4/exercise4-5.md
+      - '习题4.6': calculus-2/chapter4/exercise4-6.md
+      - '习题4.7': calculus-2/chapter4/exercise4-7.md
+      - '第4章总复习题': calculus-2/chapter4/exercise4-rev.md
+    - '第5章':
+      - '习题5.1': calculus-2/chapter5/exercise5-1.md
+      - '习题5.2': calculus-2/chapter5/exercise5-2.md
+      - '习题5.3': calculus-2/chapter5/exercise5-3.md
+      - '习题5.4': calculus-2/chapter5/exercise5-4.md
+      - '第5章总复习题': calculus-2/chapter5/exercise5-rev.md
+    - '第6章':
+      - '习题6.1': calculus-2/chapter6/exercise6-1.md
+      - '习题6.2': calculus-2/chapter6/exercise6-2.md
+      - '习题6.3': calculus-2/chapter6/exercise6-3.md
+      - '第6章总复习题': calculus-2/chapter6/exercise6-rev.md
+    - '第7章':
+      - '习题7.1': calculus-2/chapter7/exercise7-1.md
+      - '习题7.2': calculus-2/chapter7/exercise7-2.md
+      - '第7章总复习题': calculus-2/chapter7/exercise7-rev.md
+  - '关于': about.md
