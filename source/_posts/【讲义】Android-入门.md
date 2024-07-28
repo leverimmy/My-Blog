@@ -21,7 +21,44 @@ id: Introduction-to-Android
 
 ## Android 简介
 
+Android 是一个基于 Linux 内核的开源操作系统，主要用于移动设备，如智能手机和平板电脑。它由 Google 领导开发，并由开放手机联盟（Open Handset Alliance）支持。自 2008 年首次发布以来，Android 已经成为全球最受欢迎的移动操作系统之一。
 
+> Android 操作系统的每个主要版本通常会有一个版本号和一个以甜品为主题的昵称。以下是一些主要的 Android 版本号和对应的昵称：
+>
+> 1. **Android 1.5** - Cupcake
+> 2. **Android 1.6** - Donut
+> 3. **Android 2.0/2.1** - Eclair
+> 4. **Android 2.2/2.3** - Froyo
+> 5. **Android 3.0** - Gingerbread
+> 6. **Android 4.0** - Ice Cream Sandwich
+> 7. **Android 4.1/4.2/4.3** - Jelly Bean
+> 8. **Android 4.4** - KitKat
+> 9. **Android 5.0/5.1** - Lollipop
+> 10. **Android 6.0** - Marshmallow
+> 11. **Android 7.0/7.1** - Nougat
+> 12. **Android 8.0/8.1** - Oreo
+> 13. **Android 9** - Pie
+>
+> 从 Android 10 开始，Google 决定不再使用甜品昵称来命名新版本，而是直接使用数字表示。
+
+### 发展历程
+
+1. **2008年**：Google 宣布 Android 操作系统，并成立开放手机联盟。
+2. **2009年**：HTC Dream（也称为 T-Mobile G1）成为第一款商用 Android 设备。
+3. **2010年**：Android 2.2（Froyo）发布，引入了对 Adobe Flash 的支持。
+4. **2011年**：Android 4.0（Ice Cream Sandwich）发布，带来了全新的用户界面和改进的多任务处理能力。
+5. **2014年**：Android 5.0（Lollipop）发布，引入了 Material Design 设计语言。
+6. **2019年**：Android 10 引入了更严格的隐私保护措施和改进的用户体验。
+7. **2021年**：Android 12 带来了全新的设计语言 Material You，以及更强大的隐私控制。
+
+### 开发工具
+
+1. **Android Studio**：官方集成开发环境（IDE），支持 Android 应用开发。
+2. **Android SDK**：包含开发 Android 应用所需的工具和库。
+3. **Android Virtual Device（AVD）**：模拟器，用于测试应用在不同设备和配置上的表现。
+4. **Gradle**：构建系统，用于编译和管理 Android 应用的依赖。
+
+通过这些工具，开发者可以高效地开发、测试和发布 Android 应用。
 
 ## 课前准备
 
@@ -178,15 +215,17 @@ dependencyResolutionManagement {
 
 
 
-## Activity
+## 基础知识
+
+### Activity
 
 
 
-## Fragment
+### Fragment
 
 
 
-## Service、Adapter 和 Intent
+### Service、Adapter 和 Intent
 
 
 
@@ -227,6 +266,8 @@ dependencyResolutionManagement {
 ## 常用工具
 
 ### JSON
+
+
 
 ### Log
 
