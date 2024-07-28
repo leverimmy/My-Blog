@@ -1,0 +1,76 @@
+name: Blog deployment using Hexo
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. 检出仓库
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: 2. 安装 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+
+      - name: 3. 安装 Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: 4. 安装 Hexo、Pandoc 和 MkDocs
+        run: |
+          npm install hexo-cli -g
+          sudo apt-get update
+          sudo apt-get install pandoc
+          pip install mkdocs
+
+      - name: 5. 缓存 Node 插件
+        uses: actions/cache@v1
+        id: cache-modules
+        with:
+          path: node_modules
+          key: ${{runner.OS}}-${{hashFiles('**/package-lock.json')}}
+
+      - name: 6. 安装依赖
+        if: steps.cache-modules.outputs.cache-hit != 'true' # 如果没有缓存或插件有更新，则安装插件
+        run: | # 如果仓库里没有 package-lock.json，上传一下，npm ci 必须要有 package-lock.json
+          npm ci
+
+      - name: 7. 写入私钥和公钥
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: 8. 配置 Git
+        run: |
+          git config --global user.name "leverimmy"
+          git config --global user.email "leverimmy@gmail.com"
+
+      - name: 9. 生成 MkDocs 静态文件并部署
+        run: |
+          cd services
+          # 遍历services目录下的所有文件夹
+          for dir in */ ; do
+            # 进入每个子目录
+            cd "${dir%/}"
+            pip install mkdocs-material
+            # 执行mkdocs build
+            mkdocs build
+            # 返回services目录
+            cd ..
+          done
+
+      - name: 10. 生成静态文件
+        run: |
+          hexo clean
+          hexo generate
+          hexo deploy
