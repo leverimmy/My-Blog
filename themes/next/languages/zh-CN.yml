@@ -68,13 +68,13 @@ search:
   hits_time: "找到 %s 个搜索结果（用时 %s 毫秒）"
   hits: "找到 %s 个搜索结果"
 cheers:
-  um: 嗯
-  ok: 还行
-  nice: 不错
-  good: 很好
-  great: 非常好
-  excellent: 太棒了
-keep_on: 继续努力叭~
+  um: 嗯！
+  ok: 还行！
+  nice: 不错！
+  good: 很好！
+  great: 非常好！
+  excellent: 太棒了！
+keep_on: 继续努力！
 symbol:
   comma: "，"
   period: "。"
