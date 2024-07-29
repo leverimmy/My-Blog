@@ -169,7 +169,7 @@ float doubleVariable = 3.1415;
 
 #### 字符：`char`
 
-在 Java 中，`char` 类型用于表示 Unicode 字符，而不是 ASCII。每个 `char` 类型的变量可以存储一个 Unicode 码点，其数值范围从 $0$ 到 $65535$（即 $\text{0xFFFF}$）。这意味着 Java 的 `char` 类型甚至能够表示汉字。
+在 Java 中，`char` 类型用于表示 Unicode 字符，而不是 ASCII。每个 `char` 类型的变量可以存储一个 Unicode 码点，其数值范围从 $0$ 到 $65535$（即 `0xFFFF`）。这意味着 Java 的 `char` 类型甚至能够表示汉字。
 
 #### 数组
 
@@ -707,56 +707,55 @@ public class LinkedListExample {
 
 `HashSet` 是 Java 中的一个不允许重复元素的集合实现。它基于 `HashMap` 实现，因此具有快速的查找速度。
 
-示例代码中的 `HashSetExample` 应为 `HashSetExample` 而不是 `HashMapExample`。代码应该展示如何使用 `HashSet` 来添加元素、检查元素是否存在、移除元素以及遍历集合。
-
 ```java HashSetExample.java
 package examples.datastructures;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
-public class HashMapExample {
+public class HashSetExample {
     public static void main(String[] args) {
-        // Create a new HashMap instance
-        Map<String, Integer> map = new HashMap<>();
+        // Create a new HashSet instance
+        Set<String> set = new HashSet<>();
 
-        // Put key-value pairs into the HashMap
-        map.put("One", 1);
-        map.put("Two", 2);
-        map.put("Three", 3);
+        // Add elements to the HashSet
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Cherry");
 
-        // Print the HashMap
-        System.out.println("Initial HashMap: " + map);
+        // Print the HashSet
+        System.out.println("Initial HashSet: " + set);
 
-        // Get the value associated with a key
-        Integer value = map.get("Two");
-        System.out.println("Value for key 'Two': " + value);
+        // Check if the HashSet contains an element
+        boolean contains = set.contains("Banana");
+        System.out.println("Does the HashSet contain 'Banana'? " + contains);
 
-        // Check if a key exists in the HashMap
-        boolean containsKey = map.containsKey("Three");
-        System.out.println("Does the key 'Three' exist? " + containsKey);
+        // Remove an element from the HashSet
+        set.remove("Apple");
+        System.out.println("HashSet after removing 'Apple': " + set);
 
-        // Remove a key-value pair from the HashMap
-        map.remove("One");
-        System.out.println("HashMap after removing 'One': " + map);
+        // Get the size of the HashSet
+        int size = set.size();
+        System.out.println("Size of the HashSet: " + size);
 
-        // Get the size of the HashMap
-        int size = map.size();
-        System.out.println("Size of the HashMap: " + size);
+        // Check if the HashSet is empty
+        boolean isEmpty = set.isEmpty();
+        System.out.println("Is the HashSet empty? " + isEmpty);
 
-        // Check if the HashMap is empty
-        boolean isEmpty = map.isEmpty();
-        System.out.println("Is the HashMap empty? " + isEmpty);
+        // Clear all elements from the HashSet
+        set.clear();
+        System.out.println("HashSet after clear(): " + set);
 
-        // Clear all key-value pairs from the HashMap
-        map.clear();
-        System.out.println("HashMap after clear(): " + map);
-
-        // Demonstrate iteration over HashMap entries
-        System.out.println("Iterating over HashMap entries:");
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        // Demonstrate iteration over HashSet elements
+        System.out.println("Iterating over HashSet elements:");
+        for (String fruit : set) {
+            System.out.println(fruit);
         }
+
+        // Add elements back to the HashSet and demonstrate uniqueness
+        set.add("Apple"); // Duplicate element
+        set.add("Apple"); // Attempt to add duplicate
+        System.out.println("HashSet with duplicate 'Apple': " + set);
     }
 }
 ```
@@ -837,7 +836,7 @@ Java 通过封装的概念将数据和操作封装在对象中。对象可以隐
 
 以下代码均包含于 `src/main/java/examples/oop` 中。
 
-### Package
+### package
 
 Java 通过包（package）来组织代码。
 
@@ -886,7 +885,7 @@ class Test {
     private String variable_2;
     
     public Test(int variable_1, String variable) { // 构造函数
-        this.variable = variable_1; // 与参数同名，则需要显式写出 this
+        this.variable_1 = variable_1; // 与参数同名，则需要显式写出 this
         variable_2 = variable; // 不同名，则不需要显式写出 this
     }
 }
