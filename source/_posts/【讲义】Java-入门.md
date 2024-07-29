@@ -404,7 +404,7 @@ public class ExceptionHandling {
         } catch (ArithmeticException e) { // will be executed if n = 0
             System.out.println("Number is zero.");
         } catch (InputMismatchException e) {
-            System.out.println("Number is not a integer.");
+            System.out.println("Number is not an integer.");
         } catch (Exception e) { // will be executed if other exception occurs
             e.printStackTrace();
         } finally { // will be executed always
@@ -848,7 +848,7 @@ package examples.oop.package1.package2;
 
 public class PackageExample {
     public static void main(String[] args) {
-        System.out.println("This is a package example");
+        System.out.println("This is a package example.");
     }
 }
 ```
@@ -927,6 +927,10 @@ public class StaticExample {
         Car(String name) {
             this.name = name;
             counter++;
+        }
+        @Override
+        public String toString() {
+            return "Car [name=" + name + "]";
         }
     }
     public static void main(String[] args) {
@@ -1158,7 +1162,7 @@ public class AbstractClassExample {
 
 多重继承是指一个类可以同时继承多个父类。然而，在 Java 中，类的多重继承是不被支持的，这意味着 Java 类不能直接从多个类继承。这是因为多重继承可能导致所谓的“菱形问题”（Diamond Problem）。
 
-假设其中继承的两个父类可能都定义了相同的方法，那么应该从哪个接口中继承该方法呢？这没有办法确定。
+假设其中继承的两个父类可能都定义了相同的方法，那么应该从哪个父类中继承该方法呢？这没有办法确定。
 
 #### 接口
 
@@ -1201,7 +1205,7 @@ public class InterfaceExample {
 
 > 所有对象都是它的对象。
 
-在 Java 中，`java.lang.Object` 是所有类的根类，它位于类继承层次结构的顶端。每个 Java 类（除了 `Object` 本身）都隐式地继承自 `Object` 类。`Object` 类提供了一些基本方法，这些方法必须在子类中正确实现，以确保正确处理“判断两个对象是否相等”这一问题。
+在 Java 中，`java.lang.Object` 是所有类的基类，它位于类继承层次结构的顶端。每个 Java 类（除了 `Object` 本身）都隐式地继承自 `Object` 类。`Object` 类提供了一些基本方法，这些方法必须在子类中正确实现，以确保正确处理“判断两个对象是否相等”这一问题。
 
 #### 对象的字符串描述：`toString()`
 
@@ -1445,7 +1449,7 @@ public class EnumExample {
         RED("R"), GREEN("G"), YELLOW("Y"), BLACK("B"), WHITE("W");
 
         private final String abbr;
-        ColorWithAbbr(String abbr) { // equivalent to `private ColorWithAbbr(...)`
+        ColorWithAbbr(String abbr) {
             this.abbr = abbr;
         }
         public String getAbbr() {
@@ -1456,6 +1460,7 @@ public class EnumExample {
         Color[] colors = Color.values();
         for (Color color : colors) {
             System.out.println(color + " toString() = " + color.toString());
+            System.out.println(color + " name() = " + color.name());
             System.out.println(color + " hashCode() = " + color.hashCode());
             System.out.println(color + " ordinal() = " + color.ordinal());
         }
@@ -1464,6 +1469,7 @@ public class EnumExample {
         for (ColorWithAbbr color : colorsWithAbbr) {
             System.out.println(color + " getAbbr() = " + color.getAbbr());
             System.out.println(color + " toString() = " + color);
+            System.out.println(color + " name() = " + color.name());
             System.out.println(color + " hashCode() = " + color.hashCode());
             System.out.println(color + " ordinal() = " + color.ordinal());
         }
