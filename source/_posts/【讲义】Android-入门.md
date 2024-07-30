@@ -289,15 +289,98 @@ Gradle 是 Android 应用的构建系统。Gradle Scripts 用于定义项目的�
 
 ### Activity
 
+**Activity** 是一个可以包含用户界面的组件，它允许用户在应用程序中执行特定的任务或操作。每个 Activity 代表应用程序中的一个单独的屏幕。
 
+详情可参考 [4.1.1 Activity初学乍练 | 菜鸟教程 (runoob.com)](https://www.runoob.com/w3cnote/android-tutorial-activity.html)。
+
+#### 生命周期
+
+Activity 的生命周期是其最重要的概念之一，它定义了 Activity 在创建、运行、暂停、恢复、停止和销毁时的行为。以下是 Activity 生命周期的主要状态：
+
+- **onCreate(Bundle savedInstanceState)**: 当 Activity 第一次被创建时调用。这是执行初始化设置的地方，如设置布局和恢复保存的状态。
+- **onStart()**: 当 Activity 对用户可见时调用，但还没有获得焦点。
+- **onResume()**: 当 Activity 可见并开始与用户交互时调用。这是执行动画或计时器等资源密集型操作的地方。
+- **onPause()**: 当 Activity 失去焦点或即将停止时调用。这是一个保存应用程序状态或停止动画的好时机。
+- **onStop()**: 当 Activity 完全不可见时调用。
+- **onDestroy()**: 当 Activity 被销毁时调用，用于清理资源。
 
 ### Fragment
 
+**Fragment** 是一个可以包含用户界面部分的组件，它使得程序员可以构建一个复杂的 UI，该 UI 可以独立于 Activity 存在。Fragment 可以被动态地添加、移除或替换。
 
+详情可参考 [5.1 Fragment基本概述 | 菜鸟教程 (runoob.com)](https://www.runoob.com/w3cnote/android-tutorial-fragment-base.html)。
 
-### Service、Adapter 和 Intent
+### Service 和 Intent
 
+#### Service
 
+并不是所有组件都是 Activity 和 Fragment，还有很多组件和界面无关，比如播放音乐或下载文件的组件。这就需要用到 Service。它的生命周期与 Activity 等有些差异。
+
+下面的代码中展示了一个音乐播放的 Service，在 `onStartCommand()` 方法中，我们通过接收 Intent 中的音乐 URL，使用 MediaPlayer 播放音乐。在服务销毁时，我们则需要释放 MediaPlayer 的资源。
+
+```java
+public class MusicPlayerService extends Service {
+
+    private MediaPlayer mediaPlayer;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mediaPlayer = new MediaPlayer();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        String musicUrl = intent.getStringExtra("music_url");
+        try {
+            mediaPlayer.setDataSource(musicUrl);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return START_NOT_STICKY; // don't restart when killed by system
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+}
+```
+
+更多请见 [4.2.1 Service初涉 | 菜鸟教程 (runoob.com)](https://www.runoob.com/w3cnote/android-tutorial-service-1.html)。
+
+#### Intent
+
+假如我们现在有了 Activity、Fragment 等组件，一个很自然的需求就是让他们之间可以进行通信。最简单的例子是，一个活动调用另一个（我们可以在活动之间传递信息，就像函数一样）。
+
+```java
+Intent intent = new Intent(CurrentActivity.this, TargetActivity.class);
+/* optional:
+    Bundle bundle = new Bundle();
+    bundle.putString("string1", "YOUR_STRING");
+    intent.putExtras(bundle);
+*/
+startActivity(intent);
+
+/*  Get your bundle in the target activity:
+    Bundle bundle = this.getIntent().getExtras();
+    String str1 = bundle.getString("string1");
+*/
+```
+
+更多请见 [4.5.1 Intent的基本使用 | 菜鸟教程 (runoob.com)](https://www.runoob.com/w3cnote/android-tutorial-intent-base.html)。
 
 ## 常用组件
 
@@ -488,7 +571,31 @@ button.setOnClickListener(new View.OnClickListener() {
 
 ### AlertDialog
 
-`AlertDialog` 是一种对话框，用于显示消息并提供用户交互选项，如按钮或单选/复选按钮。它可以用来提示用户或请求用户输入。
+AlertDialog 是 Android 中用于显示对话框的一种组件，它允许开发者创建包含文本、按钮和其他 UI 元素的模态对话框。模态对话框会阻止用户与应用的其他部分交互，直到对话框被关闭。
+
+**构建 AlertDialog**
+
+1. **创建 Builder 对象**： 使用 `new AlertDialog.Builder(context)` 创建一个 `AlertDialog.Builder` 对象，其中 `context` 通常是当前的 Activity 或 Fragment。
+2. **设置标题和消息**： 使用 `setTitle()` 和 `setMessage()` 方法设置对话框的标题和消息文本。
+3. **添加按钮**： 使用 `setPositiveButton()`、`setNegativeButton()`、`setNeutralButton()` 方法添加按钮。这些方法接受按钮文本和 `OnClickListener` 作为参数。
+4. **创建和显示对话框**： 调用 `create()` 创建对话框实例，然后调用 `show()` 显示对话框。
+
+**按钮和监听器**
+
+- **PositiveButton**：通常用于确认操作，例如 "确定" 或 "是"。
+- **NegativeButton**：通常用于取消操作，例如 "取消" 或 "否"。
+- **NeutralButton**（不常用）：可以用于提供第三种操作。
+
+按钮的监听器是一个实现了 `DialogInterface.OnClickListener` 接口的匿名类，它提供了两个方法：`onClick(DialogInterface dialog, int which)`，其中 `which` 参数指示哪个按钮被点击。
+
+**自定义 AlertDialog**
+
+除了设置标题、消息和按钮，AlertDialog 还支持以下自定义选项：
+
+- **图标**：使用 `setIcon()` 方法设置对话框的图标。
+- **取消操作**：使用 `setCancelable(boolean)` 控制对话框是否可以被取消。
+- **取消按钮**：使用 `setOnCancelListener()` 设置当对话框被取消时的监听器。
+- **按键监听**：使用 `setOnKeyListener()` 设置当按键事件发生时的监听器。
 
 ```java
 void processNewGame() {
@@ -543,19 +650,151 @@ public User loadUser() {
 
 ### JSON
 
+JSONObject 和 JSONArray 是在处理 JSON 数据时使用的两种基本数据结构。它们是轻量级的，并且通常用于在 Web 服务和移动应用之间传输数据。在 Android 开发中，这两个类通常由 `org.json` 库提供，这个库不是 Android 标准库的一部分，因此需要单独添加到项目中。
 
+#### JSONObject
+
+JSONObject 是一个映射表，用来存储键值对，其中键是字符串，值可以是以下类型之一：
+
+- `String`
+- `Number`
+- `JSONObject`
+- `JSONArray`
+- `Boolean`
+- `null`
+
+**基本用法**:
+
+1. **创建 JSONObject**:
+
+   ```java
+   JSONObject jsonObject = new JSONObject();
+   ```
+
+2. **添加数据**:
+
+   ```java
+   jsonObject.put("key", "value");
+   jsonObject.put("key2", 123);
+   jsonObject.put("key3", anotherJsonObject);
+   ```
+
+3. **获取数据**:
+
+   ```java
+   String value = jsonObject.getString("key");
+   int number = jsonObject.getInt("key2");
+   JSONObject jobj = jsonObject.getJSONObject("key3");
+   ```
+
+4. **遍历 JSONObject**:
+
+   ```java
+   Iterator<String> keys = jsonObject.keys();
+   while (keys.hasNext()) {
+       String key = keys.next();
+       Object value = jsonObject.get(key);
+       // 处理 key 和 value
+   }
+   ```
+
+#### JSONArray
+
+JSONArray 是一个列表，用于存储有序的值集合。与 JSONObject 类似，JSONArray 中的值也可以是字符串、数字、布尔值、另一个 JSONObject 或 JSONArray。
+
+**基本用法**:
+
+1. **创建 JSONArray**:
+
+   ```java
+   JSONArray jsonArray = new JSONArray();
+   ```
+
+2. **添加数据**:
+
+   ```java
+   jsonArray.put("value1");
+   jsonArray.put(123);
+   jsonArray.put(anotherJsonObject);
+   jsonArray.put(anotherJsonArray);
+   ```
+
+3. **获取数据**:
+
+   ```java
+   String value = jsonArray.getString(0);
+   int number = jsonArray.getInt(1);
+   JSONObject jobj = jsonArray.getJSONObject(2);
+   JSONArray jarray = jsonArray.getJSONArray(3);
+   ```
+
+4. **访问长度**:
+
+   ```java
+   int length = jsonArray.length();
+   ```
+
+5. **遍历 JSONArray**:
+
+   ```java
+   for (int i = 0; i < jsonArray.length(); i++) {
+       Object value = jsonArray.get(i);
+       // 处理 value
+   }
+   ```
+
+#### 示例代码
+
+以下是一个简单的示例，演示了如何创建和使用 `JSONObject` 和 `JSONArray`：
+
+```java
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class JsonExample {
+    public static void main(String[] args) {
+        // 创建 JSONObject
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", "John Doe");
+        jsonObject.put("age", 30);
+        
+        // 创建 JSONArray
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.put("Apple");
+        jsonArray.put("Banana");
+        jsonArray.put("Cherry");
+        
+        // 将 JSONArray 添加到 JSONObject
+        jsonObject.put("fruits", jsonArray);
+        
+        // 输出整个 JSON 对象
+        System.out.println(jsonObject.toString());
+        
+        // 获取并输出 name
+        System.out.println(jsonObject.getString("name"));
+        
+        // 获取并遍历 fruits
+        JSONArray fruits = jsonObject.getJSONArray("fruits");
+        for (int i = 0; i < fruits.length(); i++) {
+            System.out.println(fruits.get(i));
+        }
+    }
+}
+```
 
 ### Log
 
+在 Android 开发中，Log 类是用于输出日志信息的非常有用的工具。它属于 `android.util` 包，提供了多种方法来打印不同级别的日志信息，帮助开发者调试应用。
+
+日志信息通常包括一个标签（tag）和一个消息（message）。标签是一个简短的字符串，用于标识日志信息的来源，而消息则是要输出的具体内容。
+
 ```java
-Log.d("preferenceTest", "Read [winRounds = " + winRounds +
-                            ", totalRounds = " + totalRounds +
-                            ", guesses = " + Arrays.toString(guesses) + "]");
+Log.d("preferenceTest", "This is a debug message.");
 ```
 
+Log 类输出的日志可以在 Android Studio 的 Logcat 窗口中查看。Logcat 是一个实时日志查看工具，允许开发者根据日志级别、标签等条件过滤日志信息。
 
-
-
+使用 Log 类是 Android 开发中调试和监控应用状态的重要手段。合理使用日志可以帮助你快速定位问题并优化应用性能。
 
 ## 参考资料
 
