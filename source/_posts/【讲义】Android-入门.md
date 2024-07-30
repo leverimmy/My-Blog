@@ -301,37 +301,220 @@ Gradle 是 Android 应用的构建系统。Gradle Scripts 用于定义项目的�
 
 ## 常用组件
 
-### LinearLayout
+### LinearLayout、GridLayout 和 TableLayout
 
+**LinearLayout** 是一种布局容器，用于在垂直或水平方向上排列子视图。它提供了一种简单的方式来组织布局。
 
+**TableLayout** 是一种用于创建表格布局的容器。它允许你创建行和列，并将子视图放置在这些行和列中。
 
-### GridLayout
+比如以下组件，就综合运用了 LinearLayout 和 TableLayout 两种布局：
 
+![Layout](/gallery/Introduction-to-Android/layout.png)
 
+整个“键盘”为一个四行的 TableLayout，每一行都是一个 LinearLayout 中包含数个 Button。 
 
-### TableLayout
+代码如下：
 
+```xml
+<TableLayout
+    android:id="@+id/KeyboardLayout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/InputLayout"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_Q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:layout_marginEnd="1dp"
+            android:text="Q" />
+
+        <Button
+            android:id="@+id/button_W"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:layout_marginEnd="1dp"
+            android:text="W" />
+        <!-- Other buttons... -->
+
+    </LinearLayout>
+    
+    <LinearLayout> <!-- Other lines... --> </LinearLayout>
+    <LinearLayout> <!-- Other lines... --> </LinearLayout>
+</TableLayout>
+```
+
+**GridLayout** 提供了一种将子视图排列在网格中的灵活方式。你可以指定行数和列数，或者让布局自动调整以适应内容。
+
+例如以下的 GridLayout，可以在对应的 Java 代码中进行修改行数和列数，并给每一个 Grid 填充内容。
+
+```xml
+<GridLayout
+    android:id="@+id/InputLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+</GridLayout>
+```
+
+![GridLayout](/gallery/Introduction-to-Android/gridlayout.png)
+
+```java
+GridLayout inputLayout = binding.InputLayout;
+
+// 设置行数和列数
+inputLayout.setRowCount(TOTAL_CHANCES);
+inputLayout.setColumnCount(WORD_LENGTH);
+// 设置元素居中方式
+inputLayout.setForegroundGravity(Gravity.CENTER);
+
+for (int row = 0; row < inputLayout.getRowCount(); row++) {
+    for (int col = 0; col < inputLayout.getColumnCount(); col++) {
+        
+        // 每个 Grid 里准备放一个 TextView
+        TextView textView = new TextView(getContext());
+        textView.setText(" ");
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextSize(50); // 设置文本大小
+        textView.setTextColor(Color.WHITE.getRgbCode());
+        textView.setBackgroundResource(R.drawable.gray_border); // 设置背景，默认为灰色
+        // 设置参数
+        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+        params.columnSpec = GridLayout.spec(col, 1); // 设置 TextView 占据一个整列
+        params.rowSpec = GridLayout.spec(row, 1); // 设置 TextView 占据一个整行
+
+        int screenWidth = getResources().getDisplayMetrics().widthPixels;
+        params.width = screenWidth / inputLayout.getColumnCount();
+        params.height = WRAP_CONTENT;
+
+        // 将 TextView 添加到 GridLayout
+        inputLayout.addView(textView, params);
+    }
+}
+```
 
 ### TextView
 
+**TextView** 是用于显示文本的视图组件。它可以显示单行或多行文本，并且可以设置文本样式，如字体大小、颜色和对齐方式。
 
+就在刚刚的代码中，我们向每个 Grid 中插入了一个 TextView 来展示文字。
+
+```java
+// 每个 Grid 里准备放一个 TextView
+TextView textView = new TextView(getContext());
+textView.setText(" "); // 设置文本内容
+textView.setGravity(Gravity.CENTER); // 设置文本居中
+textView.setTextSize(50); // 设置文本大小
+textView.setTextColor(Color.WHITE.getRgbCode());
+textView.setBackgroundResource(R.drawable.gray_border); // 设置背景，默认为灰色
+```
 
 ### Button
 
+**Button** 是一种用户可以点击的控件，用于触发事件或执行操作。你可以设置按钮的文本、图标和点击监听器。
 
+```xml
+<Button
+    android:id="@+id/myButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Click Me"
+    android:textSize="18sp"
+    android:textColor="#FFFFFF"
+    android:background="@drawable/button_background"
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:onClick="onButtonClick" />
+```
+
+Button 控件可以通过设置 `OnClickListener` 来响应用户的点击事件：
+
+```java
+Button button = findViewById(R.id.myButton);
+button.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        // 在这里处理点击事件
+        Toast.makeText(this, "Button Clicked!", Toast.LENGTH_SHORT).show();
+    }
+});
+```
 
 ### Toast
 
+**Toast** 是 Android 中用于显示简短消息的一种组件，它是一种轻量级的通知方式，可以向用户显示信息，而不会打断用户当前的操作。Toast 消息通常出现在屏幕的底部，并且会在几秒钟后自动消失。
 
+- **创建 Toast 消息**： 使用 `Toast.makeText()` 方法创建一个 Toast 对象，并传入上下文、要显示的消息和显示时长。
+
+   ```java
+   Toast toast = Toast.makeText(context, message, duration);
+   ```
+
+   - `context`：上下文，通常是 Activity 或 Service 的实例。
+   - `message`：要显示的文本消息。
+   - `duration`：显示时长，可以是 `Toast.LENGTH_SHORT` 或 `Toast.LENGTH_LONG`。
+- **显示 Toast 消息**： 调用 `toast.show()` 方法来显示 Toast 消息。
+
+   ```java
+   toast.show();
+   ```
+
+- **设置文本颜色**： 使用 `setTextColor()` 方法设置文本颜色。
+
+  ```java
+  toast.setDuration(Toast.LENGTH_SHORT);
+  toast.setTextColor(Color.WHITE);
+  ```
+
+- **设置背景颜色**： 使用 `setBackgroundColor()` 方法设置背景颜色。
+
+  ```java
+  TextView textView = toast.getView();
+  textView.setBackgroundColor(Color.parseColor("#FF6347")); // tomato color
+  ```
 
 ### AlertDialog
 
+`AlertDialog` 是一种对话框，用于显示消息并提供用户交互选项，如按钮或单选/复选按钮。它可以用来提示用户或请求用户输入。
 
+```java
+void processNewGame() {
+    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+    dialogBuilder.setTitle("新的游戏")
+        .setMessage("你确定要放弃此轮游戏吗？")
+        .setPositiveButton("是，并查看答案", (dialogInterface, i) -> {
+            Toast.makeText(getContext(), "答案为 " + state.answer.toLowerCase() + "。", Toast.LENGTH_SHORT).show();
+            User user = ((MainActivity) getActivity()).loadUser();
+            user.totalRounds += 1;
+            ((MainActivity) getActivity()).saveUser(user);
+            // 重新开始游戏
+            startNewGame();
+        })
+        .setNegativeButton("否", (dialog, which) -> Log.i("DialogBuilder","点击了否"))
+        .create().show();
+}
+```
 
 ### SharedPreferences
 
+`SharedPreferences` 是一种轻量级的存储解决方案，用于存储少量的数据，如用户偏好设置。它可以存储键值对数据，并提供简单的 API 来读写这些数据。
 
+- `getSharedPreferences(String name, int mode)`：获取一个 `SharedPreferences` 对象，`name` 是存储的名称，`mode` 是访问模式。
+- `getInt(String key, int defValue)`：根据提供的键读取整数值，如果键不存在，则返回默认值 `defValue`。
+- `MODE_PRIVATE`：一个常量，表示 `SharedPreferences` 文件只能被应用本身访问。
 
 ```java
 public User loadUser() {
@@ -355,8 +538,6 @@ public User loadUser() {
     return new User(winRounds, totalRounds, guesses);
 }
 ```
-
-
 
 ## 常用工具
 
