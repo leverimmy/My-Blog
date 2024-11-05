@@ -1,9 +1,7 @@
 ---
 title: 如何在自己的服务器上部署 HedgeDoc？
 tags:
-  - 博客
-  - GitHub
-  - Hexo
+  - 服务器
   - HedgeDoc
 categories:
   - 技术
@@ -81,17 +79,17 @@ volumes:
   uploads:
 ```
 
-各个环境变量的配置具体如下（更多信息可参考 [Configuration - HedgeDoc](https://docs.hedgedoc.org/configuration/)）：
+由于希望只有自己能够创建文档，所以我进行了严格的权限设置。各个环境变量的配置具体如下（更多信息可参考 [Configuration - HedgeDoc](https://docs.hedgedoc.org/configuration/)）：
 
 | 环境变量                    | 内容                       | 值                                                    |
 | --------------------------- | -------------------------- | ----------------------------------------------------- |
 | `CMD_DB_URL`                | 数据库路径                 | `postgres://hedgedoc:password@database:5432/hedgedoc` |
 | `CMD_DOMAIN`                | 域名                       | `hedgedoc.leverimmy.top`                              |
 | `CMD_PORT`                  | 端口                       | `3000`                                                |
-| `CMD_ALLOW_ANONYMOUS`       | 是否允许匿名               | `false`                                               |
+| `CMD_ALLOW_ANONYMOUS`       | 是否允许匿名创建文档       | `false`                                               |
 | `CMD_ALLOW_ANONYMOUS_EDITS` | 是否允许匿名用户编辑       | `true`                                                |
 | `CMD_DEFAULT_PERMISSION`    | 新建文档时，文档的默认权限 | `private`                                             |
-| `CMD_ALLOW_EMAIL_REGISTER`  | 是否允许                   | `false`                                               |
+| `CMD_ALLOW_EMAIL_REGISTER`  | 是否允许邮箱注册           | `false`                                               |
 | `CMD_ALLOW_GRAVATAR`        | 是否使用 Gravatar 作为头像 | `false`                                               |
 | `CMD_PROTOCOL_USESSL`       | 是否使用 SSL 协议          | `true`                                                |
 
