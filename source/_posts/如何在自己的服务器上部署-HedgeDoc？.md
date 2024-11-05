@@ -292,15 +292,16 @@ sudo ./nginx
 
 ## 总结
 
-前前后后花了大概两周的时间。
+前前后后花了大概两周的时间，终于是把 HedgeDoc 部署好了。
 
-终于是
+在我博客上部署 HedgeDoc 的主要的目的有以下几个：
+
+- 可以替代**飞书**，用于同时协作共享 Markdown 文档。
+- 可以替代 **Ubuntu Pastebin**，分享一些代码片段。
+- 可以替代 **Slidev**，编写一些简单的 PPT。
 
 ## 参考资料
 
 1. [How to Self-Host a HedgeDoc Instance Using Docker: Installation, HTTPS, Backups, Updates, User Management - David Augustat](https://davidaugustat.com/web/hedgedoc-on-docker-compose)
-
 2. [Getting started with HedgeDoc](https://tech.interfluidity.com/2023/08/23/getting-started-with-hedgedoc/index.html#nginxconf)
-
 3. [Html not loading stylesheet - running in docker container](https://community.hedgedoc.org/t/html-not-loading-stylesheet-running-in-docker-container/375)
-
