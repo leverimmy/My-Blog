@@ -103,6 +103,7 @@ menu:
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   about: /about/ || fa fa-user
+  '友情链接': /links/ || fa fa-link
   '服务': /services/ || fa fa-concierge-bell
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
