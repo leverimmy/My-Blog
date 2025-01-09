@@ -66,9 +66,12 @@ jobs:
 
       - name: 10. 压缩所有图片
         run: |
-          pip install pillow
-          chmod +x tools/main.py
-          python tools/main.py
+          # pip install pillow
+          # chmod +x tools/main.py
+          # python tools/main.py
+          sudo apt update
+          sudo apt install imagemagick
+          find source/gallery -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) -exec mogrify -quality 85 {} + 
 
       - name: 11. 生成静态文件
         run: |
