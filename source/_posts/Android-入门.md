@@ -73,21 +73,21 @@ Android 是一个基于 Linux 内核的开源操作系统，主要用于移动�
 
 安装时请务必安装 Android Virtual Device。
 
-![安装 Android Virtual Device](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/install-avd.png)
+![安装 Android Virtual Device](/gallery/Introduction-to-Android/install-avd.png)
 
 #### 安装 SDK
 
 大概率你的电脑上并没有 Android SDK。在安装完 Android Studio 并打开后，它有可能会提示你“Missing SDK”。
 
-![未找到 SDK](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/missing-sdk.png)
+![未找到 SDK](/gallery/Introduction-to-Android/missing-sdk.png)
 
 此时你应该跟随安装程序，继续安装 SDK。将红色框内所有能选的选项均选中（你的界面可能与我的不同，多的也都选上）。
 
-![安装 SDK](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/install-sdk.png)
+![安装 SDK](/gallery/Introduction-to-Android/install-sdk.png)
 
 然后进行漫长的等待即可。
 
-![下载 SDK](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/download-sdk.png)
+![下载 SDK](/gallery/Introduction-to-Android/download-sdk.png)
 
 ### Hello world!
 
@@ -95,11 +95,11 @@ Android 是一个基于 Linux 内核的开源操作系统，主要用于移动�
 
 我们在 Android Studio 里新建一个项目，模板我这里选用的是 Bottom Navigation Views Activity，大家也可以多多尝试，看这些模板有什么不同。
 
-![新建项目模板](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/new-project-template.png)
+![新建项目模板](/gallery/Introduction-to-Android/new-project-template.png)
 
 然后选择**编程语言**、**最低 SDK 版本**和**构建语言**。我分别选择的是 **Java**、**API 25** 和 **Kotlin DSL**。
 
-![新建项目配置](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/new-project-config.png)
+![新建项目配置](/gallery/Introduction-to-Android/new-project-config.png)
 
 完成之后 Gradle 会进行一次构建。如果不出意外的话，构建应该会**失败**。这是因为项目的部分包（package）需要联网获取；而在国内，由于某些原因，对那些网络资源的访问不够顺畅。因此我们需要修改配置，将其换为国内镜像。
 
@@ -186,31 +186,31 @@ dependencyResolutionManagement {
 
 重新进行 Gradle Project Sync 即可完成 Gradle 构建。如果下方出现 `BUILD SUCCESSFUL in **s` 的字样，这说明你的第一个 Android 应用程序就已经构建完成了！
 
-![Gradle 重新构建](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/gradle-sync.png)
+![Gradle 重新构建](/gallery/Introduction-to-Android/gradle-sync.png)
 
 #### 新建虚拟机
 
 通过 Device Manager 添加一台新的虚拟机。
 
-![Device Manager](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/device-manager.png)
+![Device Manager](/gallery/Introduction-to-Android/device-manager.png)
 
 选择机型，我选择的是 Pixel 8。
 
-![Select Hardware](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/select-hardware.png)
+![Select Hardware](/gallery/Introduction-to-Android/select-hardware.png)
 
 选择虚拟机上 SDK 版本。我选择的是 API 25。如果你还记得的话，我们在新建项目时设置了最低 SDK 版本。也就是说，我们的程序在 API 小于 25 的机器上均不能运行。所以这里至少需要选择 API 25。
 
-![System Image](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/system-image.png)
+![System Image](/gallery/Introduction-to-Android/system-image.png)
 
 #### 构建并将应用安装到虚拟机上
 
 点击“运行”按钮即可。
 
-![Run App](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/run-app.png)
+![Run App](/gallery/Introduction-to-Android/run-app.png)
 
 最后在虚拟机上的运行结果应当如下：
 
-![Virtual Device](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/virtual-device.png)
+![Virtual Device](/gallery/Introduction-to-Android/virtual-device.png)
 
 ## Android 项目结构
 
@@ -392,7 +392,7 @@ startActivity(intent);
 
 比如以下组件，就综合运用了 LinearLayout 和 TableLayout 两种布局：
 
-![Layout](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/layout.png)
+![Layout](/gallery/Introduction-to-Android/layout.png)
 
 整个“键盘”为一个四行的 TableLayout，每一行都是一个 LinearLayout 中包含数个 Button。 
 
@@ -453,7 +453,7 @@ startActivity(intent);
 </GridLayout>
 ```
 
-![GridLayout](https://cdn.jsdelivr.net/gh/leverimmy/My-Blog@main/source/gallery/Introduction-to-Android/gridlayout.png)
+![GridLayout](/gallery/Introduction-to-Android/gridlayout.png)
 
 ```java
 GridLayout inputLayout = binding.InputLayout;
