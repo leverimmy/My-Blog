@@ -69,9 +69,11 @@ jobs:
           # pip install pillow
           # chmod +x tools/main.py
           # python tools/main.py
-          sudo apt update
-          sudo apt install imagemagick
-          find source/gallery -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) -exec mogrify -quality 85 {} + 
+
+          # sudo apt install imagemagick
+          # find source/gallery -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) -exec mogrify -quality 85 {} + 
+          chmod +x tools/compress.sh
+          ./tools/compress.sh
 
       - name: 11. 生成静态文件
         run: |
