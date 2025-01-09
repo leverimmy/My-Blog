@@ -69,7 +69,13 @@ jobs:
             cd ..
           done
 
-      - name: 10. 生成静态文件
+      - name: 10. 压缩所有图片
+        run: |
+          pip install pillow
+          chmod +x services/tools/main.py
+          python services/tools/main.py
+
+      - name: 11. 生成静态文件
         run: |
           hexo clean
           hexo generate
