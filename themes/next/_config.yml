@@ -144,7 +144,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: /gallery/misc/avatar.jpg
+  url: https://github.com/leverimmy/My-Blog/blob/main/source/gallery/misc/avatar.jpg
   # If true, the avatar will be displayed in circle.
   rounded: false
   # If true, the avatar will be rotated with the cursor.
@@ -232,7 +232,7 @@ footer:
     # The full num of gongan beian.
     gongan_num: 京公网安备11010802044639号
     # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
-    gongan_icon_url: /gallery/misc/icp.png
+    gongan_icon_url: https://github.com/leverimmy/My-Blog/blob/main/source/gallery/misc/icp.png
 
 
 # ---------------------------------------------------------------
@@ -273,7 +273,7 @@ reward_settings:
   animation: false
 
 reward:
-  wechatpay: /gallery/misc/wechatpay.jpg
+  wechatpay: https://github.com/leverimmy/My-Blog/blob/main/source/gallery/misc/wechatpay.jpg
   #alipay: /images/alipay.png
   #paypal: /images/paypal.png
   #bitcoin: /images/bitcoin.png
