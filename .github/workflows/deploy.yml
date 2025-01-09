@@ -24,12 +24,11 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: 4. 安装 Hexo、Pandoc 和 MkDocs
+      - name: 4. 安装 Hexo 和 Pandoc
         run: |
           npm install hexo-cli -g
           sudo apt-get update
           sudo apt-get install pandoc
-          pip install mkdocs
 
       - name: 5. 缓存 Node 插件
         uses: actions/cache@v4
@@ -57,23 +56,19 @@ jobs:
 
       - name: 9. 生成 MkDocs 静态文件并部署
         run: |
+          pip install mkdocs mkdocs-material
           cd services
-          # 遍历services目录下的所有文件夹
           for dir in */ ; do
-            # 进入每个子目录
             cd "${dir%/}"
-            pip install mkdocs-material
-            # 执行mkdocs build
             mkdocs build
-            # 返回services目录
             cd ..
           done
 
       - name: 10. 压缩所有图片
         run: |
           pip install pillow
-          chmod +x services/tools/main.py
-          python services/tools/main.py
+          chmod +x tools/main.py
+          python tools/main.py
 
       - name: 11. 生成静态文件
         run: |
