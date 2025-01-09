@@ -16,7 +16,7 @@ id: How-to-Deploy-HedgeDoc-on-Your-Own-Server
 
 [HedgeDoc](https://hedgedoc.org/) 是一个开源的、基于 Web 的、自托管的协作式 Markdown 编辑器。它允许用户轻松地实时协作处理笔记、图表甚至演示文稿。用户只需分享笔记链接，就可以进行共同协作。
 
-![[Demo 文档](https://hedgedoc.leverimmy.top/s/Eu_wTrO5y)](https://github.com/leverimmy/My-Blog/blob/main/source/gallery/How-to-Deploy-HedgeDoc-on-Your-Own-Server/demo.png)
+![[Demo 文档](https://hedgedoc.leverimmy.top/s/Eu_wTrO5y)](https://raw.githubusercontent.com/leverimmy/My-Blog/refs/heads/main/source/gallery/How-to-Deploy-HedgeDoc-on-Your-Own-Server/demo.png)
 
 <!--more-->
 
