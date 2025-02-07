@@ -24,11 +24,12 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: 4. 安装 Hexo 和 Pandoc
+      - name: 4. 安装 Hexo、Pandoc 和 d2
         run: |
           npm install hexo-cli -g
-          sudo apt-get update
-          sudo apt-get install pandoc
+          sudo apt install pandoc
+          sudo apt install curl
+          curl -fsSL https://d2lang.com/install.sh | sh -s --
 
       - name: 5. 缓存 Node 插件
         uses: actions/cache@v4
@@ -66,10 +67,6 @@ jobs:
 
       - name: 10. 压缩所有图片
         run: |
-          # pip install pillow
-          # chmod +x tools/main.py
-          # python tools/main.py
-
           sudo apt install imagemagick
           # find source/gallery -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) -exec mogrify -quality 85 {} + 
           chmod +x tools/compress.sh
