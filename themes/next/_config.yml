@@ -745,10 +745,10 @@ isso: # <data_isso>
 # For more information: https://giscus.app/
 giscus:
   enable: true
-  repo: LeverImmy/leverimmy.github.io
-  repo_id: R_kgDOHq9iIQ
+  repo: leverimmy/My-Blog
+  repo_id: R_kgDOMbwQ2Q
   category: Announcements
-  category_id: DIC_kwDOHq9iIc4CgMEM
+  category_id: DIC_kwDOMbwQ2c4Cms0a
   mapping: pathname
   strict: 1
   reactions_enabled: 1
