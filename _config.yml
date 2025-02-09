@@ -40,6 +40,7 @@ highlight:
   hljs: false
   exclude_languages:
     - mermaid
+    - d2
 prismjs:
   enable: false
   preprocess: true
@@ -82,7 +83,3 @@ feed:
   content_limit_delim: ' '
   order_by: -date
 rss: /atom.xml
-# lazyload:
-#   enable: true 
-#   onlypost: true
-#   loadingImg: # eg. ./images/loading.png
