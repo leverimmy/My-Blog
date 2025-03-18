@@ -74,7 +74,7 @@ $$
 
 **证明**
 
-(1) 设 $F(x, y, z) = xyz - a^3$. 则 $\dfrac{\partial F}{\partial x} = yz, \dfrac{\partial F}{\partial y} = xz, \dfrac{\partial F}{\partial z} = xy$. 假设切点为 $(x_0, y_0, z_0)$, 则切平面的表达式为 $y_0z_0(x - x_0) + x_0z_0(y - y_0) + x_0y_0(z - z_0) = 0$ 与坐标轴交点分别为 $(x_0, 0, 0), (0, y_0, 0), (0, 0, z_0)$. 体积即为 $\dfrac{1}{6}x_0y_0z_0 = \dfrac{1}{12}a^3$ 为定值.
+(1) 设 $F(x, y, z) = xyz - a^3$. 则 $\dfrac{\partial F}{\partial x} = yz, \dfrac{\partial F}{\partial y} = xz, \dfrac{\partial F}{\partial z} = xy$. 假设切点为 $(x_0, y_0, z_0)$, 则切平面的表达式为 $y_0z_0(x - x_0) + x_0z_0(y - y_0) + x_0y_0(z - z_0) = 0$ 与坐标轴交点分别为 $(3x_0, 0, 0), (0, 3y_0, 0), (0, 0, 3z_0)$. 体积即为 $\dfrac{1}{6}\cdot(3x_0)(3y_0)(3z_0) = \dfrac{9}{2}a^3$ 为定值.
 
 (3) 由于 $\dfrac{\partial z}{\partial x} = 2x, \dfrac{\partial z}{\partial y} = 2y$, 所以设切点为 $(x_0, y_0, z_0)$, 则法向量为 $(2x_0, 2y_0, -1)$. 而该直线能被表示为 $\dfrac{x - 1}{2} = \dfrac{y - 2}{2} = \dfrac{z}{-1}$, 因此有 $2x_0 = 2y_0 = 2$. 解得切点为 $(1, 1, 2)$. 所以切平面为 $2(x - 1) + 2(y - 1) - (z - 2) = 0$.
 
