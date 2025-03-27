@@ -33,7 +33,7 @@ $$
 
 ![Figure 1: A minimal "Hello World" program and its corresponding state machine.](/gallery/Paper-Reading-The-Hitchhiker-s-Guide-to-Operating-Systems/fig-1.png)
 
-从这个角度来看，没有 syscall 的（用户）程序其实什么都做不了，它只能修改寄存器和分配给自己的内存。只有使用 syscall，它才能和 OS 进行交互，做更多的事情——例如修改内存映射（`mmap`）或者终止程序的运行（`exit`）。
+从这个角度来看，没有 System Call 的（用户）程序其实什么都做不了，它只能修改寄存器和分配给自己的内存。只有使用 System Call，它才能和 OS 进行交互，做更多的事情——例如修改内存映射（`mmap`）或者终止程序的运行（`exit`）。
 
 > Without system calls, the program (state machine)
 is a "closed world" that can only perform arithmetic and logical operations over memory and register values.
@@ -83,7 +83,7 @@ $$
 
 ## Emulate State Machines with Executable Models
 
-[MOSAIC](https://github.com/jiangyy/mosaic) 是一个**用 Python 模拟的、基于状态机的 OS**，它实现了[部分 syscall](https://github.com/jiangyy/mosaic/tree/main?tab=readme-ov-file#modeled-system-calls)。
+[MOSAIC](https://github.com/jiangyy/mosaic) 是一个**用 Python 模拟的、基于状态机的 OS**，它实现了[部分 System Call](https://github.com/jiangyy/mosaic/tree/main?tab=readme-ov-file#modeled-system-calls)。
 
 {% note danger %}
 记得安装 `psutil` 这个 Python 包。
@@ -110,7 +110,7 @@ def main():
 python3 mosaic.py --check examples/fork-buf.py | grep stdout | sort | uniq
 ```
 
-{% note info no-icon 这统计了所有可能的输出。运行得到的结果如下： %}
+{% note info no-icon 运行该代码将统计所有可能的输出。运行得到的结果如下： %}
 ```
 "stdout": "",
 "stdout": "️0\n️0\n",
@@ -260,7 +260,7 @@ MOSIAC 还支持以 HTML 的形式导出状态机图，而且支持交互。对�
 python3 examples/_reproduce.py
 ```
 
-可以得到输出
+可以得到输出：
 
 ```bash
 ---------------------  fork-buf (7 LOC)  ---------------------
@@ -295,6 +295,115 @@ python3 examples/_reproduce.py
 ```
 
 不过话说回来，作为一个以教学为主要目的的 OS 来说，MOSAIC 已经够用了。
+
+## MOSAIC 代码阅读
+
+结合论文，可以对 [MOSAIC](https://github.com/jiangyy/mosaic/) 的代码进行分析。
+
+### MOSAIC System Calls
+
+MOSAIC 支持[部分 System Call](https://github.com/jiangyy/mosaic/tree/main?tab=readme-ov-file#modeled-system-calls)。
+
+代码中使用了装饰器语法，这样后文所有 System Call 的实现都可以用 `@syscall` 来将系统调用注册到 `SYSCALLS` 列表中。
+
+### MOSAIC Emulator
+
+#### `__init__`
+
+初始化：
+
+#### `sys_spawn`
+
+#### `sys_fork`
+
+#### `sys_sched`
+
+#### `sys_choose`
+
+#### `sys_write`
+
+#### `sys_bread`
+
+#### `sys_bwrite`
+
+#### `sys_sync`
+
+#### `sys_crash`
+
+#### `replay`
+
+#### `_step`
+
+#### `state_dump`
+
+#### `current`
+
+#### `_switch_to`
+
+### MOSAIC Runtime
+
+MOSAIC Runtime 由 Checker 和 Parser 两部分组成。
+
+#### MOSAIC Checker
+
+Checker 中有两个重要的函数：`run()` 和 `check()`。`run()` 负责（随机地遍历）模拟一次运行情况，`check()` 负责验证所有的运行情况。
+
+它们的返回值都是一个三元组 `(source, vertices, edges)`：
+
+- `source` 是（运行的）源代码。
+- `vertices` 是：
+  - 对于 `run()`：所有 `state` 按照运行情况的顺序构成的列表，首个元素是初始状态 `st0`。
+  - 对于 `check()`：所有 `state` 构成的集合。
+
+  每一个 `state` 都对应一个 Hash 值。
+- `edges` 是所有 `state` 之间转移边的列表。每一条边都由三元组 `(source, target, label)` 表示，其中 `source` 和 `target` 都是对应的 Hash 值，`label` 表示选择的哪个 `choice`。
+
+#### MOSAIC Parser
+
+Parser 负责解析并重写（将要运行的）代码。
+
+`Transformer` 继承于 `ast.NodeTransformer`，重载了 `visit_Call(self, node)` 方法，将代码中所有的 System Call 都转为 `yield (<syscall>, <*args>)` 的形式。
+
+<table style="width: 100%;">
+    <thead>
+        <tr>
+            <th style="width: 50%;">重写前</th>
+            <th style="width: 50%;">重写后</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="width: 50%;">
+              ```python examples/fork-buf.py (modified)
+              def main():
+                  N = 2
+                  heap.buf = ''
+                  for _ in range(N):
+                      pid = sys_fork()
+                      sys_sched()
+                      heap.buf += f'️{pid}\n'
+                  sys_write(heap.buf)
+              ```
+            </td>
+            <td style="width: 50%;">
+              ```python
+              def main():
+                  N = 2
+                  heap.buf = ''
+                  for _ in range(N):
+                      pid = (yield ('sys_fork', ()))
+                      yield ('sys_sched', ())
+                      heap.buf += f'️{pid}\n'
+                  yield ('sys_write', (heap.buf,))
+              ```
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### `main` 函数
+
+读入（待运行的）源代码，根据运行参数（`--run` 和 `--check`）来选择是（遍历）模拟此文件，还是利用状态机对此文件进行验证。
 
 ## 总结
 
