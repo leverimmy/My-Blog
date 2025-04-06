@@ -46,3 +46,17 @@ Another impactful moment is when Bob participates in a commercial shoot for Sunt
 Reflecting on my own experiences, I realize my cultural encounters differ greatly from Bob's. While he struggled with cultural disorientation in Japan, I felt at ease during my visit. However, I do recall experiencing re-entry shock after returning to my hometown Wuhan from the United States when I was in fifth grade. The jet lag was intense - I couldn't sleep well for an entire week and often woke up at five in the morning, unable to fall back asleep. It was disconcerting for someone so young. What's more, I found myself temporarily struggling to speak Chinese as fluently as I used to, which felt odd and even amusing.
 
 In conclusion, *Lost in Translation* is a beautiful film that captures the complexities of cultural disconnection and human relationships. Its subtle storytelling and relatable themes make it a timeless piece of cinema that continues to resonate with audiences, myself included.
+
+## I Belong to a High-Context Cultural Dimension @ 2025-04-05, week 7
+
+I've never considered whether I belong to a high-context or low-context cultural dimension before - this question only came to my attention when I started to write this journal.
+
+I was raised in a traditional Chinese family, which has many of the typical stereotypes of an East-Asian upbringing. As a child, I attended plenty of extracurricular lessons and participated in various sports. During traditional festivals throughout the year, I was expected to visit relatives and offer greetings, even if I didn't really know them. This was likely done to maintain my parents' "face," a concept deeply rooted in our culture.
+
+A recent experience illustrates well that I hold a high-context culture point of view. Last Sunday, a classmate and I scheduled to play table tennis at the North Gymnasium. We did play table tennis, but his skills were not compatible to mine, and I found the experience rather unpleasant. However, since we are classmates, I refrained from pointing this out directly. Instead, I decided that if a similar situation arises in the future, I would politely decline with an excuse.
+
+In my culture, the concept of "face" plays a significant role in social interactions. "Face" refers to a person's reputation, dignity, and social standing, and it is something that should be carefully maintained and respected. Losing face can be deeply embarrassing, while giving face to others is seen as a sign of respect and consideration.
+
+For example, when I communicate with others, I often prioritize harmony and avoid direct confrontation. If someone makes a mistake, I might choose to address it indirectly or let it slide to preserve their dignity. Similarly, when I receive compliments, I tend to downplay my achievements to appear humble and avoid making others feel uncomfortable.
+
+This cultural emphasis on "face" influences how I communicate and behave in various situations. It encourages me to be mindful of others' feelings and to approach conflicts with tact and sensitivity. While this approach may sometimes feel restrictive, I believe it fosters a sense of mutual respect and understanding in my relationships.
