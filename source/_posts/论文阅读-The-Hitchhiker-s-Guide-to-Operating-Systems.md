@@ -252,7 +252,7 @@ MOSIAC 还支持以 HTML 的形式导出状态机图，而且支持交互。对�
 
 <iframe src="/gallery/Paper-Reading-The-Hitchhiker-s-Guide-to-Operating-Systems/fork-buf.html" width="100%" height="400px"></iframe>
 
-可惜的是，MOSAIC 没办法解决状态空间爆炸问题，MOSAIC 在处理大量 `fork()` 的程序时显著变慢（例如 `fork-buf.py` 和 `tocttou.py`），因为我们的 fork() 是通过全系统重放实现的。
+可惜的是，MOSAIC 没办法解决状态空间爆炸问题，MOSAIC 在处理大量 `fork()` 的程序时显著变慢（例如 `fork-buf.py` 和 `tocttou.py`），因为我们的 `fork()` 是通过全系统重放实现的。
 
 运行
 
