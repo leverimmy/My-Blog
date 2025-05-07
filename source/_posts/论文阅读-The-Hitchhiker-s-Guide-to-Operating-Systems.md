@@ -13,7 +13,7 @@ id: Paper-Reading-The-Hitchhiker-s-Guide-to-Operating-Systems
 
 TL;DR：用形式化语言理解 OS——**OS 是一个管理状态机的系统**。
 
-> ACT'23, [论文链接](https://www.usenix.org/system/files/atc23-jiang-yanyan.pdf)
+> ATC'23, [论文链接](https://www.usenix.org/system/files/atc23-jiang-yanyan.pdf)
 
 <!--more-->
 
