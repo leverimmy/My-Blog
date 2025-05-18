@@ -15,7 +15,7 @@ As I took the course "Cross-culture Communication" this semester, I am required 
 
 <!--more-->
 
-## How I Communicate with Others @ 2025-03-11, week 3
+## How I Communicate with Others @ 2025-03-11, Week 3
 
 There are lots of people around me in my life - classmates, teachers, friends, and family members. As I reflect on my communication style, I realize how it varies across these different contexts.
 
@@ -33,7 +33,7 @@ However, there are times when I dislike someone. People who are condescending, a
 
 This is *me*.
 
-## Film Review for *Lost in Translation* @ 2025-03-21, week 5
+## Film Review for *Lost in Translation* @ 2025-03-21, Week 5
 
 I watched the film *Lost in Translation* last weekend, and it left a refreshing and thought-provoking impression on my mind. The movie manages to explore the themes of loneliness and cultural disconnection.
 
@@ -47,7 +47,7 @@ Reflecting on my own experiences, I realize my cultural encounters differ greatl
 
 In conclusion, *Lost in Translation* is a beautiful film that captures the complexities of cultural disconnection and human relationships. Its subtle storytelling and relatable themes make it a timeless piece of cinema that continues to resonate with audiences, myself included.
 
-## I Belong to a High-Context Cultural Dimension @ 2025-04-05, week 7
+## I Belong to a High-Context Cultural Dimension @ 2025-04-05, Week 7
 
 I've never considered whether I belong to a high-context or low-context cultural dimension before - this question only came to my attention when I started to write this journal.
 
@@ -61,7 +61,7 @@ For example, when I communicate with others, I often prioritize harmony and avoi
 
 This cultural emphasis on "face" influences how I communicate and behave in various situations. It encourages me to be mindful of others' feelings and to approach conflicts with tact and sensitivity. While this approach may sometimes feel restrictive, I believe it fosters a sense of mutual respect and understanding in my relationships.
 
-## Memes as a Unifying Force in Cross-Cultural Humor @ 2025-04-26, week 10
+## Memes as a Unifying Force in Cross-Cultural Humor @ 2025-04-26, Week 10
 
 The use of memes and GIFs in cross-cultural humor can have both connecting and misunderstanding effects. From my point of view, it does more good than harm. On the positive side, these visual formats transcend language barriers and allow for humor to be shared globally. Though memes and GIFs rely on universal themes, relatable experiences, and exaggerated expressions, all of which may lead to misinterpretation and unintended offense, my point is that they provide a common visual vocabulary that enables people from different backgrounds to engage with and relate to the same comedic content. Even if they don't speak the same language, they can still possibly infer the meaning.
 
@@ -70,3 +70,17 @@ The rapid spread of memes online further reinforces this sense of cross-cultural
 It's true that some memes or GIFs can also lead to misunderstandings. Humor is highly contextual, and visual jokes can bring unintended meanings when viewed from outside of their original cultural framework. Additionally, not all cultures may share the same references or find the same things funny.
 
 However, despite these risks of misinterpretation, the increasing use of memes and GIFs has been a positive tide in modern cross-cultural humor. The shared visual language they provide helps connect people, sparking moments of levity and collective amusement that transcend cultural boundaries. Ultimately, the ability of these formats to foster connection outweighs their potential for occasional misunderstanding.
+
+## Cross-Cultural Communication: Bridging Various Cultures Across the Globe @ 2025-05-18, Week 13
+
+A crucial takeaway from this course - "Cross-Cultural Communication", is the development of effective conflict resolution strategies in intercultural contexts.
+
+While conflict is an inherent aspect of human interaction, its manifestation, interpretation, and resolution are profoundly shaped by cultural norms and values. What one culture considers a direct and assertive approach to conflict resolution might be perceived as aggressive and disrespectful in another. Conversely, strategies that prioritize harmony and saving face, common in some cultures, could be viewed as evasive or unproductive in those that value open confrontation.
+
+A key focus of this course is the identification and analysis of cultural dimensions. Frameworks such as Hofstede's cultural dimensions theory (e.g., individualism vs. collectivism, power distance, uncertainty avoidance) and Hall's high-context vs. low-context communication styles provide valuable lenses through which to understand and compare different cultural approaches. By examining these dimensions, students gain a deeper appreciation for the diverse ways in which societies organize themselves, prioritize values, and convey meaning.
+
+Furthermore, when I was attending the class, I was immersed in the impact of cultural differences on specific contexts, such as business negotiations, teamwork, conflict resolution, and social interactions. Through case studies, simulations, and discussions, I am pretty sure that I have developd practical skills for navigating these situations effectively. I learnt to adapt their communication styles, build rapport across cultural divides, and find common ground to achieve shared objectives.
+
+One notable change involves my assumption about the universality of communication styles. I initially thought that while languages might differ, fundamental communication principles like directness and clarity were universally valued and understood in the same way. If I wanted to convey something effectively, being straightforward and explicit seemed like the most logical and honest approach. However, the course illuminated the profound cultural variations in communication styles. I learned about high-context cultures where meaning is often embedded in the context, relationships, and non-verbal cues, making directness potentially jarring or even rude. Conversely, in low-context cultures, explicitness is highly valued for clarity and efficiency. This understanding has tempered my default inclination towards directness, making me more attuned to the potential for misinterpretation in different cultural settings and more conscious of the need to adapt my style to be more context-aware and sensitive to indirect communication cues.
+
+In conclusion, this course offers invaluable insights and practical skills for navigating our increasingly diverse world. The ability to communicate effectively across cultures is not just a professional advantage; it is a fundamental skill for fostering understanding, empathy, and collaboration in all aspects of life.
