@@ -49,6 +49,8 @@ Self-Printing Turing Machine 的构造由两部分组成：
 
 ## Quine：一个能输出自己代码的程序
 
+Quine 是一种特殊的程序，能够在没有任何输入的情况下输出其自身的源代码。换句话说，运行 Quine 程序会产生与其源代码完全相同的输出。
+
 Quine 是 Self-Printing Turing Machine 在编程语言中的实现。尽管二者原理相通，编程语言与 Turing Machine 又有不同：Turing Machine 的输入输出全部在纸带上，而编程语言通常通过标准输入输出进行交互。在没有标准输出输出的情况下，“源代码本身”成为了一种隐式输入。
 
 下面以 Python 语言为例，展示如何构造一个 Quine。将 Quine 与 Self-Printing Turing Machine 做比较，最关键的一步在于厘清程序中哪一部分对应理论模型中的 $A$，哪一部分对应 $B$。
@@ -231,3 +233,9 @@ diff quine_y.py quine_y_1.py
 ```
 
 没有任何输出，说明两个文件相同。
+
+## 参考资料
+
+1.  Self-Reproducing Programs. Tsoding. https://www.youtube.com/watch?v=QGm-d5Ch5JM
+2.  Quine (computing). Wikipedia. https://en.wikipedia.org/wiki/Quine_(computing)
+3.  Fixed-point combinator. Wikipedia. https://en.wikipedia.org/wiki/Fixed-point_combinator
