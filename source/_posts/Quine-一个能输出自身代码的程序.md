@@ -53,9 +53,7 @@ Quine 是 Self-Printing Turing Machine 在编程语言中的实现。尽管二�
 
 下面以 Python 语言为例，展示如何构造一个 Quine。将 Quine 与 Self-Printing Turing Machine 做比较，最关键的一步在于厘清程序中哪一部分对应理论模型中的 $A$，哪一部分对应 $B$。
 
-像 Tsoding 在他视频中展示的那样，我们可以在代码中引入一个“锚点”（Anchor），例如 `$`，用来在逻辑中指代“代码本身”的位置。
-
-在该构造中，程序的逻辑实际上承担了 $B$ 部分的职责：它读取自身的代码作为输入，随后依次输出“能够打印该代码的程序逻辑”（即 $A$ 部分）以及“代码本身”（即 $B$ 部分）。具体实现步骤如下：
+程序的逻辑实际上承担了 $B$ 部分的职责：它读取自身的代码作为输入，随后依次输出“能够打印该代码的程序逻辑”（即 $A$ 部分）以及“代码本身”（即 $B$ 部分）。具体实现步骤如下：
 
 1.  **读取代码本身**：在 Python 中，这一步通过将源代码存储在一个字符串变量中实现，例如 `self` 变量。
 2.  **输出“能输出代码本身的程序”**：这一步通过遍历 `self` 变量来实现。当遍历到锚点 `$` 时，程序转而输出 `self` 变量的内容（经过适当的转义处理）。之所以需要转义，是为了确保输出的内容符合字符串字面量的语法要求，从而正确生成代码的 $A$ 部分。
@@ -147,6 +145,13 @@ diff quine.py quine_1.py
 
 没有任何输出，说明两个文件相同。
 
+>   一个更加简洁的 Python Quine 的实现是：
+>
+>   ```python
+>   self = 'self = {0!r}\nprint(self.format(self), end="")'
+>   print(self.format(self), end="")
+>   ```
+
 Tsoding 说，Quine 有很多实现方式，（上述代码的思路）只是他的实现方式。“程序输出自身”这种自我指涉让我联想到了 Y Combinator，于是我又复习了一下 Lambda Calculus（Lambda 演算）中的相关内容。
 
 ## Y Combinator 以及…
@@ -182,6 +187,47 @@ $$
 >   \end{align*}
 >   $$
 
-也就是说，$Yg$ 一定是 $g$ 的不动点。因此，如果我们要求一个东西的不动点，我们可以直接将 Y Combinator 应用上去。
+也就是说，$Yg$ 一定是 $g$ 的不动点。因此，如果我们想求一个东西的不动点，我们可以直接将 Y Combinator 应用上去。
 
-从这个角度来看，Quine 其实也是一种不动点：设 $g: \Sigma^* \to \Sigma^*, g: \text{input} \mapsto \text{output}$ 表示“将 $\text{input}$ 作为代码运行，会输出 $\text{output}$”。那么，我们要求的 Quine 其实是 $g$ 的不动点。
+从这个角度来看，Quine 其实是一种不动点：设 $T: \Sigma^* \to \Sigma^*, T: \text{input} \mapsto \text{output}$ 表示“将 $\text{input}$ 放进模板代码 $T$ 中，运行后，输出 $\text{output}$”。那么，我们要求的 Quine 其实是模板代码 $T$ 的不动点。
+
+但是，在 Python 这样的严格求值语言中，并不能使用 Y Combinator，因为 Y Combinator 在立即求值的情况下会导致无限递归。我们可以使用延迟（thunk）以懒惰求值。
+
+### Y Combinator + Thunk in Python
+
+Y Combinator 在 Python 中的实现如下：
+
+```python
+Y = lambda f: (lambda x: f(x(x)))(lambda x: f(x(x)))
+```
+
+但是，这个实现里的 `x(x)` 会导致无限递归。我们可以使用 thunk 来避免这个问题：
+
+```python
+Y = lambda f: (lambda x: f(lambda: x(x)))(lambda x: f(lambda: x(x)))
+```
+
+这样，`x(x)` 被包裹在一个无参数的 lambda 函数中，只有在需要时才会被调用，从而避免了立即求值导致的无限递归问题。
+
+Python 代码实现如下：
+
+```python quine_y.py
+Y = lambda f: (lambda x: f(lambda: x(x)))(lambda x: f(lambda: x(x)))
+
+t = 'Y = lambda f: (lambda x: f(lambda: x(x)))(lambda x: f(lambda: x(x)))\n\nt = {0!r}\n\nT = lambda _: t.format(t)\n\nprint(Y(T), end="")'
+
+T = lambda _: t.format(t)
+
+print(Y(T), end="")
+```
+
+这里的 `Y` 为 Y Combinator，`t` 为模板代码，`T` 为“渲染”模板代码的函数。`Y(T)` 会返回 `T` 的不动点，即渲染后的模板代码。
+
+检查 Quine 是否正确，可以运行以下命令：
+
+```bash
+python3 quine_y.py > quine_y_1.py
+diff quine_y.py quine_y_1.py
+```
+
+没有任何输出，说明两个文件相同。
