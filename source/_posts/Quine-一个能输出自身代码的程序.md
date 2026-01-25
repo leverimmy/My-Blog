@@ -14,9 +14,9 @@ id: Quine-a-Program-That-Outputs-Its-Own-Code
 ---
 
 几天前看到了 Tsoding 的一段视频：[Self-Reproducing Programs
-](https://www.youtube.com/watch?v=QGm-d5Ch5JM)，里面提到了 C 和 Rust 语言编译器的自举、以及 Quine，让我联想到了在《理论计算机科学导论》这门课上学到的 Y Combinator 和 Self-Printing Turing Machine 等内容。
+](https://www.youtube.com/watch?v=QGm-d5Ch5JM)，里面提到了 C 和 Rust 语言编译器的自举以及 Quine。这让我联想到了在《理论计算机科学导论》这门课上学到的 Y Combinator 和 Self-Printing Turing Machine 等内容。
 
-感觉 Quine 是很有意思的一件事儿，~~但已经过了接近两年了，我早就把这些内容忘光了。~~于是又重新学习了相关资料，写下了这篇博客。
+感觉 Quine 是很有意思的一件事儿，~~但上次接触相关内容已经过了接近两年了，我早就把这些内容忘光了。~~于是又重新学习了相关资料，写下了这篇博客。
 
 <!--more-->
 
