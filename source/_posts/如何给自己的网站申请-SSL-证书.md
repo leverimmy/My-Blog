@@ -15,9 +15,9 @@ id: How-to-Apply-for-SSL-Certificate-for-Your-Personal-Website
 
 <!--more-->
 
-在阿里云的 `数字证书管理服务/SSL证书管理` 页面下，给域名 `leverimmy.top` 申请 `个人测试证书（原免费证书）`，然后下载适用于 Nginx 的 pem/key 格式的证书包。
+在阿里云的 `数字证书管理服务/SSL证书管理` 页面下，给域名 `leverimmy.top` 和 `hedgedoc.leverimmy.top` 申请 `个人测试证书（原免费证书）`，然后下载适用于 Nginx 的 pem/key 格式的证书包。
 
-将证书分别上传到服务器的 `/usr/local/nginx/SSL` 目录下：
+将 `leverimmy.top` 和 `hedgedoc.leverimmy.top` 的证书分别上传到服务器的 `/usr/local/nginx/SSL` 目录下：
 
 ```bash
 scp ./* root@47.120.48.46:/usr/local/nginx/SSL
